@@ -27,6 +27,7 @@
  * Contributors:
  *   2016 djcj <djcj@gmx.de>
  */
+#include <Windows.h>
 
 #ifndef SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H
 #define SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H

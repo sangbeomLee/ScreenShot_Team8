@@ -48,10 +48,6 @@
 #include <Windows.h>
 #include <stdio.h>
 
-#include "bitmap.c"
-#include "take-screenshot.c"
-
-
 int main(void)
 {
 	LPTSTR filename = "screenshot.bmp";

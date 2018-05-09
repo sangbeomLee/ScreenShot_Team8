@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\openSS\Screen_Shot_Team8\bitmap.c" />
+    <ClCompile Include="..\..\..\..\..\..\openSS\Screen_Shot_Team8\repath.c" />
+    <ClCompile Include="..\..\..\..\..\..\openSS\Screen_Shot_Team8\screenshot-simple.c" />
+    <ClCompile Include="..\..\..\..\..\..\openSS\Screen_Shot_Team8\start.c" />
+    <ClCompile Include="..\..\..\..\..\..\openSS\Screen_Shot_Team8\take-screenshot.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\openSS\Screen_Shot_Team8\bitmap.h" />
+    <ClInclude Include="..\..\..\..\..\..\openSS\Screen_Shot_Team8\take-screenshot.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{A6680132-9E8A-430D-9EA1-FAFDBADCC020}</ProjectGuid>
@@ -134,8 +145,6 @@
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -14,7 +14,7 @@ void start(LPTSTR filename) {
 	printf("Sejong Univ. Opensource Assignment\n");
 	printf("<<<<<<<<ScreenShot Program>>>>>>>>\n");
 	printf("8조_ 이상범, 정유라, 신지현, 알렉\n");
-	printf("----------------------------------\n\n");
+	printf("----------------------------------\n\n"); 
 	
 	
 

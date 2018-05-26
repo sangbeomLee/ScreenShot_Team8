@@ -60,12 +60,12 @@
 int main(void)
 {
 	char FileName[100] = "ScreenShot.bmp";
-	char FilePath[100] = ".\\save\\";
+	char FilePath[100] = ".\\Users\jungy\shot\ScreenShot_Team8\ScreenShot_Team8";
 	char RFile[200] = "";
 	strcat(RFile, FileName);
 	strcat(RFile, FilePath);
-	LPTSTR File= (LPSTR)(LPCTSTR)RFile;
-	
+//	LPTSTR File= (LPSTR)(LPCTSTR)RFile;
+	LPTSTR File = "Screenshot.bmp";
 	int choice = 0;
 	int sc = 0;
 	start();	// 시작화면 호출

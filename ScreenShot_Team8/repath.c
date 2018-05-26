@@ -5,4 +5,4 @@ void rePath(LPCTSTR FileName) {			// 파일경로 변경
 	
 	scanf("%s", &path);
 
-}
+} 

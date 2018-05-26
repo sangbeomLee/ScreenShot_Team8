@@ -51,7 +51,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 /*
 	C언어를 이용하여 스크린샷 찍는 프로그램을 찍는 오픈소스이다.
 	기본적으로 스크린샷이 어떻게 찍히는지를 알고 부가기능을
@@ -64,7 +63,7 @@ int main(void)
 	
 	int choice = 0;
 	int sc = 0;
-	char FileName[100] = "ScreenShot.bmp";
+	char FileName[100] = "ScreenShot.png";
 	char FilePath[100] = ".\\save\\";
 	char RFile[200] = "";
 	strcat(RFile, FilePath);
@@ -97,11 +96,25 @@ int main(void)
 				{
 					printf("Problem saving screenshot.");
 				}
-			}
-				
-		case 1:
-		break;
+				break;
 
+			case 1:
+				if (takeScreenshot(File) == 0) {
+					if (captureWithMouseDragging(RFile)) {
+						printf("Screenshot successfully saved.");
+					}
+					else
+					{
+						printf("Problem saving screenshot.");
+					}
+				}
+				else
+				{
+					printf("Problem saving screenshot.");
+				}
+				break;
+			}
+			break;
 		case 2:
 			rePath(File);
 			break;
@@ -110,10 +123,6 @@ int main(void)
 			return 0;
 
 		}
-		
-
-		
-
 		
 	}
 	return 0;

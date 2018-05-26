@@ -44,7 +44,7 @@ int createBitmapFile(LPCTSTR lpszFileName, HBITMAP hBitmap, HDC hdc)
   int rgbQuadSize         = sizeof(RGBQUAD);
   int bits                = bitmap.bmPlanes * bitmap.bmBitsPixel;
   int infoHeaderSizeImage = ((bitmap.bmWidth * bits + 31) &~31) / 8 * bitmap.bmHeight;
-  //FIXME : bit+31 로 되어있는데 이 부분에서 사이즈 오류가 난다고 생각.
+
   PBITMAPINFO pBitmapInfo = (PBITMAPINFO) LocalAlloc(LPTR,
                                                      infoHeaderSize +
                                                      rgbQuadSize * (1 << bits));

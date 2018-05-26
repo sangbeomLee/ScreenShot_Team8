@@ -58,15 +58,48 @@
 
 int main(void)
 {
-	LPTSTR filename = TEXT("ScreenShot.bmp");
-	start();
+	LPTSTR FileName = TEXT("ScreenShot.bmp");
+	LPTSTR FilePath = 0;
+
+	int choice = 0;
+
+	start();	// 시작화면 호출
+
 	while (1)
 	{
+		printf("------------------------------------\n");
+		printf("현재 저장될 Screenshot Image의 정보\n");
+
+		printf("파일명 : %s\n\n", FileName);
+		//	printf("파일명 : %s\n파일경로 : %s\n\n", FileName, filepath);
+		printf("위의 파일명, 파일경로로 Screenshot을 원하시면 0번을 입력해주세요.\n");
+		printf("파일명 변경 : 1을 입력, 파일경로 변경 : 2를 입력해주세요.\n");
+		printf("입력 : ");
+		scanf("%d", &choice);
+
+		switch (choice) {
+		case 1:
+			printf("변경된 파일이름 : %s", reName(FileName));
+		break;
+
+		case 2:
+		printf("변경된 파일경로 : %s", rePath(FilePath));
+		break;
+
+		default:
+		break;
+		}
 		
-		if (takeScreenshot(filename) == 0)
+
+		if (takeScreenshot(FileName) == 0)
 		{
 			printf("Screenshot successfully saved.");
-			rePath(filename);
+			rePath(FileName);
+			//printf("[화면 지우고 난 후 출력]\n");
+			//printf("67890\n");
+			printf("Screenshot이 완료되었습니다.\n");
+			printf("현재 저장된 Screenshot Image의 정보\n");
+			printf("파일명 : %s\n파일경로 : %s\n\n", FileName, FilePath);
 		}
 		else
 		{

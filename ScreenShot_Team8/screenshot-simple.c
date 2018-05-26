@@ -50,6 +50,7 @@
 #include <Windows.h>
 #include <stdio.h>
 
+
 /*
 	C언어를 이용하여 스크린샷 찍는 프로그램을 찍는 오픈소스이다.
 	기본적으로 스크린샷이 어떻게 찍히는지를 알고 부가기능을
@@ -58,23 +59,60 @@
 
 int main(void)
 {
-	LPTSTR filename = TEXT("ScreenShot.bmp");
-	start();
+	char FileName[100] = "ScreenShot.bmp";
+	char FilePath[100] = ".\\save\\";
+	char RFile[200] = "";
+	strcat(RFile, FileName);
+	strcat(RFile, FilePath);
+	LPTSTR File= (LPSTR)(LPCTSTR)RFile;
+	
+	int choice = 0;
+	int sc = 0;
+	start();	// 시작화면 호출
+
 	while (1)
 	{
-		
-		if (takeScreenshot(filename) == 0)
-		{
-			printf("Screenshot successfully saved.");
-			rePath(filename);
-		}
-		else
-		{
-			printf("Problem saving screenshot.");
-			return -1;
-		}
+		printf("------------------------------------\n");
+		printf("현재 저장될 Screenshot Image의 정보\n");
+		printf("파일명 : %s\n\n", FileName);
 
-		return 0;
+		//	printf("파일명 : %s\n파일경로 : %s\n\n", FileName, filepath);
+		printf("0 : 스크린 샷  1 : 파일명 변경  2 : 파일경로 변경 3 : 나가기\n");
+		printf("입력 : ");
+		scanf("%d", &choice);
+
+		switch (choice) {
+		case 0:
+			printf("0 : Full ScreenShot  1 : ScreenShot with mouse");
+			scanf("%d", &sc);
+			switch (sc) {
+			case 0:
+				if (takeScreenshot(File) == 0)
+				{
+					printf("Screenshot successfully saved.");
+				}
+				else
+				{
+					printf("Problem saving screenshot.");
+				}
+			}
+				
+		case 1:
+		break;
+
+		case 2:
+			rePath(File);
+			break;
+		case 3:
+			printf("스크린 샷 프로그램을 종료합니다.");
+			return 0;
+
+		}
+		
+
+		
+
+		
 	}
-	
+	return 0;
 }

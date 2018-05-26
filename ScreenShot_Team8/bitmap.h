@@ -27,7 +27,7 @@
  * Contributors:
  *   2016 djcj <djcj@gmx.de>
  */
-
+#include <Windows.h>
 #ifndef SCREENSHOT_SIMPLE_BITMAP_H
 #define SCREENSHOT_SIMPLE_BITMAP_H
 //info : 크리에이트 비트맵 파일함수로 비트맵 파일을 만든다.

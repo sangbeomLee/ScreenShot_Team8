@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <string.h>
 
 void reName(LPCTSTR FileName) {			// 파일이름 변경
 

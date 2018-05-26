@@ -49,6 +49,7 @@
 
 #include <Windows.h>
 #include <stdio.h>
+#include <string.h>
 
 
 /*
@@ -59,16 +60,17 @@
 
 int main(void)
 {
-	char FileName[100] = "ScreenShot.bmp";
-	char FilePath[100] = ".\\save\\";
-	char RFile[200] = "";
-	strcat(RFile, FileName);
-	strcat(RFile, FilePath);
-	LPTSTR File= (LPSTR)(LPCTSTR)RFile;
+	start();	// 시작화면 호출
 	
 	int choice = 0;
 	int sc = 0;
-	start();	// 시작화면 호출
+	char FileName[100] = "ScreenShot.bmp";
+	char FilePath[100] = ".\\save\\";
+	char RFile[200] = "";
+	strcat(RFile, FilePath);
+	strcat(RFile, FileName);
+
+	LPTSTR File = (LPSTR)(LPCTSTR)RFile;
 
 	while (1)
 	{

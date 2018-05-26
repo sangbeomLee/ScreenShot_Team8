@@ -1,4 +1,5 @@
 #include <opencv2\opencv.hpp>
+#include <Windows.h>
 
 
 IplImage * g_src = NULL;
@@ -8,6 +9,8 @@ IplImage * g_result = NULL;
 
 CvPoint pt1;
 CvPoint pt2;
+
+LPTSTR reFile;
 
 void drawRectangle(IplImage * src, IplImage * dst, CvPoint p1, CvPoint p2)
 {
@@ -43,6 +46,8 @@ void drawRectangle(IplImage * src, IplImage * dst, CvPoint p1, CvPoint p2)
 
 void myMouse(int event, int x, int y, int flags, void * param)
 {
+	
+
 	//pt1 = cvPoint(-1, -1);
 	if (event == CV_EVENT_LBUTTONDOWN) {
 		pt1 = cvPoint(x, y);
@@ -76,14 +81,16 @@ void myMouse(int event, int x, int y, int flags, void * param)
 				cvSet2D(g_result, y - pt1.y, x - pt1.x, f);
 			}
 
-		cvSaveImage("D:\\screen.jpg", g_result, NULL);
+		cvSaveImage(reFile, g_result, NULL);
 		cvDestroyWindow("dst");
 	}
 
 }
 
-int captureWithMouseDragging() {
-	g_src = cvLoadImage("D:\\Docs\\OpenSource Software Intro\\Screenshot\\Screenshot\\Screenshot\\screenshot.bmp", CV_LOAD_IMAGE_COLOR);
+int captureWithMouseDragging(char *RFile) {
+	g_src = cvLoadImage(RFile, CV_LOAD_IMAGE_COLOR);
+	reFile = (LPSTR)(LPCTSTR)RFile;
+
 	if (g_src == NULL) { printf("Couldn't find the image file"); exit(0); }
 	CvSize size = cvGetSize(g_src);
 
@@ -107,4 +114,5 @@ int captureWithMouseDragging() {
 	cvReleaseImage(&g_src);
 	cvReleaseImage(&g_dst);
 	cvReleaseImage(&g_copy);
+	return 1;
 }

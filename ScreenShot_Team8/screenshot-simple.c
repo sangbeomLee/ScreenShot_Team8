@@ -49,7 +49,7 @@
 
 #include <Windows.h>
 #include <stdio.h>
-
+#include <string.h>
 
 /*
 	C언어를 이용하여 스크린샷 찍는 프로그램을 찍는 오픈소스이다.
@@ -59,16 +59,17 @@
 
 int main(void)
 {
-	char FileName[100] = "ScreenShot.bmp";
-	char FilePath[100] = ".\\save\\";
-	char RFile[200] = "";
-	strcat(RFile, FileName);
-	strcat(RFile, FilePath);
-	LPTSTR File= (LPSTR)(LPCTSTR)RFile;
+	start();	// 시작화면 호출
 	
 	int choice = 0;
 	int sc = 0;
-	start();	// 시작화면 호출
+	char FileName[100] = "ScreenShot.png";
+	char FilePath[100] = ".\\save\\";
+	char RFile[200] = "";
+	strcat(RFile, FilePath);
+	strcat(RFile, FileName);
+
+	LPTSTR File = (LPSTR)(LPCTSTR)RFile;
 
 	while (1)
 	{
@@ -95,11 +96,25 @@ int main(void)
 				{
 					printf("Problem saving screenshot.");
 				}
-			}
-				
-		case 1:
-		break;
+				break;
 
+			case 1:
+				if (takeScreenshot(File) == 0) {
+					if (captureWithMouseDragging(RFile)) {
+						printf("Screenshot successfully saved.");
+					}
+					else
+					{
+						printf("Problem saving screenshot.");
+					}
+				}
+				else
+				{
+					printf("Problem saving screenshot.");
+				}
+				break;
+			}
+			break;
 		case 2:
 			rePath(File);
 			break;
@@ -108,10 +123,6 @@ int main(void)
 			return 0;
 
 		}
-		
-
-		
-
 		
 	}
 	return 0;

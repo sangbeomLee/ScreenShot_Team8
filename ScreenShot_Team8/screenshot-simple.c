@@ -56,11 +56,36 @@ C언어를 이용하여 스크린샷 찍는 프로그램을 찍는 오픈소스이다.
 기본적으로 스크린샷이 어떻게 찍히는지를 알고 부가기능을
 추가하는것이 목표이다.
 */
+int init(char *FileName, char *FilePath) {
+	int choice = 0;
+	int i = 0;
+	int x = 36;
+	int y = 10;
+	Set_Cursor(36, 0);
+	printf("-----------------------------------------------");
+	Set_Cursor(36, 2);
+	printf("   ScreenShot image 파일명  : %s", FileName);
+	Set_Cursor(36, 4);
+	printf("   ScreenShot image 경로    : %s", FilePath);
+	Set_Cursor(36, 6);
+	printf("-----------------------------------------------");
+	Set_Cursor(x, y + i);
+	i += 2;
+	printf("0. 스크린 샷                     1.파일명 변경");
+	Set_Cursor(x, y + i);
+	i += 2;
+	printf("2. 파일경로 변경                 3.나가기");
+	Set_Cursor(x, y + i);
+	i += 2;
+	printf("입력 : ");
+	scanf("%d", &choice);
 
+	return choice;
+}
 int main(void)
 {
 	start();   // 시작화면 호출
-
+	
 	int choice = 0;
 	int sc = 0;
 
@@ -76,14 +101,7 @@ int main(void)
 	LPTSTR fFile;
 	while (1)
 	{
-		printf("------------------------------------\n");
-		printf("현재 저장될 Screenshot Image의 정보\n");
-		printf("파일명 : %s\n\n", FileName);
-
-		//   printf("파일명 : %s\n파일경로 : %s\n\n", FileName, filepath);
-		printf("0 : 스크린 샷  1 : 파일명 변경  2 : 파일경로 변경 3 : 나가기\n");
-		printf("입력 : ");
-		scanf("%d", &choice);
+		choice = init(FileName, FilePath);
 
 		switch (choice) {
 		case 0:
@@ -135,8 +153,9 @@ int main(void)
 			break;
 
 		case 2:
-			strcpy(FilePath, rePath(FilePath));
+			strcpy(FilePath, rePath());
 			strcpy(RFile, FilePath);
+			RFile[strlen(FilePath)] = NULL;
 			strcat(RFile, FileName);
 
 			LPTSTR File = (LPSTR)(LPCTSTR)RFile;

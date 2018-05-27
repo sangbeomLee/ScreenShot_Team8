@@ -21,12 +21,11 @@ char * Rename(char *fName) {			// 파일이름 변경
 		same = 0;
 		handle = _findfirst(".\\save\\*.bmp", &fd);
 
-		printf("파일 이름 변경\n");
+		printf("파일명을 입력하세요 : ");
 		scanf("%s", fName);
 
 		strcpy(CompareArr, fName);
 		strcat(CompareArr, ".bmp");
-		printf(">> %s\n\n", CompareArr);
 		if (handle == -1)
 		{
 			printf("There were no files.\n");

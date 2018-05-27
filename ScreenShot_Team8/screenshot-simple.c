@@ -65,10 +65,11 @@ int main(void)
 	int sc = 0;
 
 	char fName[100];
-	char FileName[100] = "screenShot.png";
+	char fName1[200];
+	char FileName[100] = "screenshot.bmp";
 	char FilePath[100] = ".\\save\\";
 	char RFile[200] = "";
-	char *ptr;
+	
 	strcat(RFile, FilePath);
 	strcat(RFile, FileName);
 
@@ -80,7 +81,6 @@ int main(void)
 		printf("현재 저장될 Screenshot Image의 정보\n");
 		printf("파일명 : %s\n\n", FileName);
 
-		//   printf("파일명 : %s\n파일경로 : %s\n\n", FileName, filepath);
 		printf("0 : 스크린 샷  1 : 파일명 변경  2 : 파일경로 변경 3 : 나가기\n");
 		printf("입력 : ");
 		scanf("%d", &choice);
@@ -91,7 +91,11 @@ int main(void)
 			scanf("%d", &sc);
 			switch (sc) {
 			case 0: //Full
-				ptr = SetFileName(FileName);
+				strcpy(RFile, FilePath);
+				strcat(RFile, SetFileName(FileName));
+
+				File = (LPSTR)(LPCTSTR)RFile;
+				
 				if (takeScreenshot(File) == 0)
 				{
 					printf("Screenshot successfully saved.");
@@ -101,9 +105,11 @@ int main(void)
 					printf("Problem saving screenshot.");
 				}
 				break;
+
 			case 1: // 이름 한 번 변경 후 스크린샷
-				ptr = Rename(fName);
-				fFile = (LPSTR)(LPCTSTR)ptr;
+				strcpy(fName1, FilePath);
+				strcat(fName1, Rename(fName));
+				fFile = (LPSTR)(LPCTSTR)fName1;
 				if (takeScreenshot(fFile) == 0)
 				{
 					printf("Screenshot successfully saved.\n");
@@ -114,6 +120,11 @@ int main(void)
 				}
 				break;
 			case 2: //Mouse
+				strcpy(RFile, FilePath);
+				strcat(RFile, SetFileName(FileName));
+
+				File = (LPSTR)(LPCTSTR)RFile;
+
 				if (takeScreenshot(File) == 0) {
 					if (captureWithMouseDragging(RFile)) {
 						printf("Screenshot successfully saved.");

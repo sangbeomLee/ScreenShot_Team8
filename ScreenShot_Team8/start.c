@@ -2,28 +2,33 @@
 #include <stdlib.h>
 #include <Windows.h>
 
+void Set_Cursor(int x, int y)
+{
+	COORD position = { x, y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
+}
 
 void start(LPTSTR filename) {
-	//void start(LPTSTR filename, LPTSTR filepath) {
-	//printf("[화면 지우기 전 출력]\n");
-	//printf("12345");
-	//int choice=0;
+	int i = 0;
+	int x = 40;
+	int y = 10;
+	Set_Cursor(x, y+i);
+	i += 2;
+	printf("----------------------------------");
+	Set_Cursor(x, y + i);
+	i += 2;
+	printf("Sejong Univ. Opensource Assignment");
+	Set_Cursor(x, y + i);
+	i += 2;
+	printf("        ScreenShot Program        ");
+	Set_Cursor(x, y + i);
+	i += 2;
+	printf("          Press the Enter");
+	Set_Cursor(x, y + i);
+	i += 2;
+	printf("----------------------------------");
 
-
-	printf("----------------------------------\n");
-	printf("Sejong Univ. Opensource Assignment\n");
-	printf("<<<<<<<<ScreenShot Program>>>>>>>>\n");
-	printf("8조_ 이상범, 정유라, 신지현, 알렉\n");
-	printf("----------------------------------\n\n");
-
-
-
-	//파일경로
 	getchar();
 	system("cls");
-
-
-
-
 
 }

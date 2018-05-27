@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
 * This is free and unencumbered software released into the public domain.
 *
@@ -36,7 +35,7 @@
 char * SetFileName(char *FileName);
 
 #endif  /* SCREENSHOT_SIMPLE_BITMAP_H */
-=======
+
 /*
 * This is free and unencumbered software released into the public domain.
 *
@@ -71,7 +70,6 @@ char * SetFileName(char *FileName);
 #define SCREENSHOT_FILENAME_H
 //info : 크리에이트 비트맵 파일함수로 비트맵 파일을 만든다.
 // maybe-later : 헤더파일이 굳이 필요한지 의문
-char filename(char *nameList);
+char SetFileName(char *nameList);
 
 #endif  /* SCREENSHOT_SIMPLE_BITMAP_H */
->>>>>>> origin/master

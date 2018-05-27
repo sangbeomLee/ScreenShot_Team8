@@ -68,7 +68,6 @@ int main(void)
 	char FileName[100] = "screenShot.png";
 	char FilePath[100] = ".\\save\\";
 	char RFile[200] = "";
-	char temp[100];
 	char *ptr;
 	strcat(RFile, FilePath);
 	strcat(RFile, FileName);
@@ -113,6 +112,7 @@ int main(void)
 				{
 					printf("Problem saving screenshot.\n");
 				}
+				break;
 			case 2: //Mouse
 				if (takeScreenshot(File) == 0) {
 					if (captureWithMouseDragging(RFile)) {

@@ -6,7 +6,7 @@
 #include "filename.h"
 typedef struct _finddata_t FILE_SEARCH;
 
-char * Rename(char *fName) {			// 파일이름 변경
+char * Rename(char *fName) {
 	char CompareArr[100];
 	char *ptr;
 	int set = 0, same = 0;

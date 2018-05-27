@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
-char * rePath() {			// 파일경로 변경
+char * rePath() {		
 	char temp[100];
 
 	printf("새로운 경로를 입력하세요 : ex).\\save\\\n");

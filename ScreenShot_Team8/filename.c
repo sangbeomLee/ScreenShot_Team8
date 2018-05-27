@@ -14,25 +14,19 @@ char * SetFileName(char *FileName)
 
 	char num[100]; // 파일명에 있는 숫자 모음
 	int filenum = 0; // screenshot.bmp가 있는지 . 있으면 1
-	char NUM[10]; // itoa
 	int idx = 0; //num[100]의 인덱스
 	int i = 0; //반복문에 쓸 인덱스 
-
-
 
 
 	if (handle == -1)
 	{
 		printf("There were no files.\n");
 		FileName = "screenshot.bmp";
-		printf("FileName: >>%s\n", FileName);
 		return FileName;
 	}
 
 	while (result != -1)
 	{
-		printf("File: %s\n", fd.name);
-
 		if (strncmp(fileform, fd.name, 11) == 0) // 'screenshot('까지 비교했을때 동일하면
 		{
 			num[idx] = fd.name[11]; //num배열에 넣어준다. 
@@ -51,31 +45,25 @@ char * SetFileName(char *FileName)
 	{
 		if (!filenum) // screenshot.bmp없다.
 		{
-			printf("num배열에 없고 screenshot.bmp도 없다.\n");
 			FileName = "screenshot.bmp";
-			printf("FileName::: %s\n", FileName);
 			return FileName;
 		}
 		else // screenshot.bmp있다.
 		{
-			printf("num배열에 없고 screenshot.bmp는 있다.\n");
-			return "screenshot(1).bmp";
+			FileName = "screenshot(1).bmp";
+			return FileName;
 		}
 	}
 	else // num배열 채워져있다.
 	{
 		if (!filenum) // screenshot.bmp없다.
 		{
-			printf("num배열에 숫자 있는데 screenshot.bmp는 없다.\n");
 			FileName = "screenshot.bmp";
 			return FileName;
 		}
 		else //num 에 숫자들이 있고 screenshot.bmp도 있다. 
 		{
-			printf("num배열에 숫자 있는데 screenshot.bmp도 있다. 숫자로 승부보겠음\n");
-
-
-
+			i = 0;
 			while (i != idx)
 			{
 				if (num[i] + 1 != num[i + 1])
@@ -83,8 +71,6 @@ char * SetFileName(char *FileName)
 					memmove(fileform + 11, fileform + 12, strlen(fileform) - 11);
 					memmove(fileform + 12, fileform + 11, strlen(fileform) - 11 + 1);
 					fileform[11] = num[i] + 1;
-					printf("fileform = namelist: %s\n", fileform);
-
 					break;
 				}
 				i++;

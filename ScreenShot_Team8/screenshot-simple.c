@@ -67,6 +67,7 @@ int main(void)
 	char fName[100];
 	char fName1[200];
 	char FileName[100] = "screenshot.bmp";
+	char FixedFileName[100] = "screenshot.bmp";
 	char FilePath[100] = ".\\save\\";
 	char RFile[200] = "";
 
@@ -75,34 +76,35 @@ int main(void)
 
 	LPTSTR File = (LPSTR)(LPCTSTR)RFile;
 	LPTSTR fFile;
+
 	while (1)
 	{
 		printf("------------------------------------\n");
 		printf("현재 저장될 Screenshot Image의 정보\n");
-		printf("파일명 : %s\n\n", FileName);
+		printf("파일명 : %s\n\n", FixedFileName);
+		printf("------------------------------------\n");
 
-		printf("0 : 스크린 샷  1 : 파일명 변경  2 : 파일경로 변경 3 : 나가기\n");
+		printf("0 : 스크린 샷\n1 : 파일경로 변경\n2 : 나가기\n");
 		printf("입력 : ");
 		scanf("%d", &choice);
 
 		switch (choice) {
 		case 0:
-			printf("0 : 기본 이름으로 스크린 샷  1. 이름 변경 후 스크린 샷 2 : 마우스를 이용하여 스크린 샷\n");
+			printf("0 : 기본 이름으로 스크린 샷\n1 : 이름 변경 후 스크린 샷\n2 : 마우스를 이용하여 스크린 샷\n");
 			scanf("%d", &sc);
 			switch (sc) {
 			case 0: //Full
 				strcpy(RFile, FilePath);
 				strcat(RFile, SetFileName(FileName));
-
 				File = (LPSTR)(LPCTSTR)RFile;
 
 				if (takeScreenshot(File) == 0)
 				{
-					printf("Screenshot successfully saved.");
+					printf("Screenshot successfully saved.\n");
 				}
 				else
 				{
-					printf("Problem saving screenshot.");
+					printf("Problem saving screenshot.\n");
 				}
 				break;
 
@@ -127,33 +129,29 @@ int main(void)
 
 				if (takeScreenshot(File) == 0) {
 					if (captureWithMouseDragging(RFile)) {
-						printf("Screenshot successfully saved.");
+						printf("Screenshot successfully saved.\n");
 					}
 					else
 					{
-						printf("Problem saving screenshot.");
+						printf("Problem saving screenshot.\n");
 					}
 				}
 				else
 				{
-					printf("Problem saving screenshot.");
+					printf("Problem saving screenshot.\n");
 				}
 				break;
 			}
 			break;
-		case 1: // 기본이름 변경되는 기능
-
-			break;
-
-		case 2:
+		case 1:
 			strcpy(FilePath, rePath(FilePath));
 			strcpy(RFile, FilePath);
 			strcat(RFile, FileName);
 
-			LPTSTR File = (LPSTR)(LPCTSTR)RFile;
+			File = (LPSTR)(LPCTSTR)RFile;
 			break;
-		case 3:
-			printf("스크린 샷 프로그램을 종료합니다.");
+		case 2:
+			printf("스크린 샷 프로그램을 종료합니다.\n");
 			return 0;
 
 		}

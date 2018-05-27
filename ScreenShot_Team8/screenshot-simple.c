@@ -120,7 +120,7 @@ int main(void)
 			strcpy(FilePath,rePath(FilePath));
 			strcpy(RFile, FilePath);
 			strcat(RFile, FileName);
-			printf("%s\n\n", RFile);
+
 			LPTSTR File = (LPSTR)(LPCTSTR)RFile;
 			break;
 		case 3:

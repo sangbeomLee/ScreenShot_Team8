@@ -66,6 +66,7 @@ int main(void)
 	char FileName[100] = "ScreenShot.png";
 	char FilePath[100] = ".\\save\\";
 	char RFile[200] = "";
+	char temp[100];
 	strcat(RFile, FilePath);
 	strcat(RFile, FileName);
 
@@ -116,7 +117,11 @@ int main(void)
 			}
 			break;
 		case 2:
-			rePath(File);
+			strcpy(FilePath,rePath(FilePath));
+			strcpy(RFile, FilePath);
+			strcat(RFile, FileName);
+			printf("%s\n\n", RFile);
+			LPTSTR File = (LPSTR)(LPCTSTR)RFile;
 			break;
 		case 3:
 			printf("스크린 샷 프로그램을 종료합니다.");

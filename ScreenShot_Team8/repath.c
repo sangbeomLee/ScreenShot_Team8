@@ -9,7 +9,7 @@ char * rePath() {			// 파일경로 변경
 	getchar();
 
 	printf("변경이 완료 되었습니다.\n");
-	printf("변경된 경로 : %s", temp);
+	printf("변경된 경로 : %s\n", temp);
 
 	return temp;
 }

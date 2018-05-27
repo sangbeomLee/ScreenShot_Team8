@@ -26,7 +26,6 @@ char * Rename(char *fName) {			// 파일이름 변경
 		
 		strcpy(CompareArr, fName);
 		strcat(CompareArr, ".bmp");
-		printf(">> %s\n\n", CompareArr);
 		if (handle == -1)
 		{
 			printf("There were no files.\n");

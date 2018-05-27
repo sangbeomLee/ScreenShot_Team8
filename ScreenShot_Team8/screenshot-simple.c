@@ -146,7 +146,8 @@ int main(void)
 			break;
 
 		case 2:
-			strcpy(FilePath, rePath(FilePath));
+			
+			strcpy(FilePath, rePath());
 			strcpy(RFile, FilePath);
 			strcat(RFile, FileName);
 

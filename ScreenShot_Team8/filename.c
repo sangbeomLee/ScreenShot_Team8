@@ -2,63 +2,11 @@
 #include<stdio.h>
 #include<io.h>
 #include<stdlib.h>
+//#include<malloc.h>
 
 typedef struct _finddata_t FILE_SEARCH;
-#include<malloc.h>
-char filename(char *FileName)
+char * SetFileName(char *FileName)
 {
-	/*FILE_SEARCH fd;
-	long handle;
-	int result = 1;
-
-	handle = _findfirst(".\\*.*", &fd);
-
-	nameList = "filename.bmp";
-	printf("namelist: %s\n", nameList);
-
-	char *ptr;
-	char arr[100];
-	int i, *num;
-	num = (int *)malloc(sizeof(int));
-	if (handle == -1)
-	{
-	printf("There were no files.\n");
-	return nameList;
-	}
-
-	while (result != -1)
-	{
-	printf("File: %s\n", fd.name);
-	ptr = fd.name;
-	for (i = 0; i < strlen(fd.name); i++)
-	{
-	arr[i] = *(ptr+i);
-	}
-	arr[i] = NULL;
-
-	if (strncmp(arr, "filename(", 9) == 0)
-	{
-	printf(">>");
-	num = arr[9] -48 + 1;
-	printf("num:%d\n", num);
-	num++;
-	printf("num1:%d\n", num);
-	}
-	if (strcmp(arr, "screenshot.bmp") == 0)
-	num = 1;
-
-	result = _findnext(handle, &fd);
-	}
-
-	char brr[] = "screenshot(";
-	strcat(brr, num);
-	strcat(nameList, ").bmp");
-	printf(">>>>>>>%s\n", nameList);
-	_findclose(handle);
-
-
-
-	return nameList;*/
 
 	FILE_SEARCH fd;
 	long handle;
@@ -106,6 +54,7 @@ char filename(char *FileName)
 		{
 			printf("num배열에 없고 screenshot.bmp도 없다.\n");
 			FileName = "screenshot.bmp";
+			printf("FileName::: %s\n", FileName);
 			return FileName;
 		}
 		else // screenshot.bmp있다.

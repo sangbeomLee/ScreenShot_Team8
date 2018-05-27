@@ -15,6 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <ClCompile Include="repath.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="screenshot-simple.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="start.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="take-screenshot.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="bitmap.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="rename.c">
+=======
     <ClCompile Include="bitmap.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -28,10 +46,17 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="take-screenshot.c">
+>>>>>>> origin/master
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <ClInclude Include="take-screenshot.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="bitmap.h">
+=======
     <ClInclude Include="bitmap.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -39,6 +64,7 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="take-screenshot.h">
+>>>>>>> origin/master
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

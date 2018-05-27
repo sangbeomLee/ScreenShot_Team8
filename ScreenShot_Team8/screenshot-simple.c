@@ -44,17 +44,17 @@
 #  pragma comment(lib, "user32.lib")
 #  pragma comment(lib, "gdi32.lib")
 #endif
-//maybe-later : GNU¸ğµå ¿¡¼­ Á¤ÀÇ  gccÈ¯°æ¿¡¼­ ÇÊ¿äÇÏ´Ù 
-//µû¶ó¼­ ÀÌ ÄÚµå¿¡¼­ »©µµ »ó°ü ¾øÀ»°Å¶ó »ı°¢µÈ´Ù.
+//maybe-later : GNUëª¨ë“œ ì—ì„œ ì •ì˜  gccí™˜ê²½ì—ì„œ í•„ìš”í•˜ë‹¤ 
+//ë”°ë¼ì„œ ì´ ì½”ë“œì—ì„œ ë¹¼ë„ ìƒê´€ ì—†ì„ê±°ë¼ ìƒê°ëœë‹¤.
 
 #include <Windows.h>
 #include <stdio.h>
 #include <string.h>
 
 /*
-C¾ğ¾î¸¦ ÀÌ¿ëÇÏ¿© ½ºÅ©¸°¼¦ Âï´Â ÇÁ·Î±×·¥À» Âï´Â ¿ÀÇÂ¼Ò½ºÀÌ´Ù.
-±âº»ÀûÀ¸·Î ½ºÅ©¸°¼¦ÀÌ ¾î¶»°Ô ÂïÈ÷´ÂÁö¸¦ ¾Ë°í ºÎ°¡±â´ÉÀ»
-Ãß°¡ÇÏ´Â°ÍÀÌ ¸ñÇ¥ÀÌ´Ù.
+Cì–¸ì–´ë¥¼ ì´ìš©í•˜ì—¬ ìŠ¤í¬ë¦°ìƒ· ì°ëŠ” í”„ë¡œê·¸ë¨ì„ ì°ëŠ” ì˜¤í”ˆì†ŒìŠ¤ì´ë‹¤.
+ê¸°ë³¸ì ìœ¼ë¡œ ìŠ¤í¬ë¦°ìƒ·ì´ ì–´ë–»ê²Œ ì°íˆëŠ”ì§€ë¥¼ ì•Œê³  ë¶€ê°€ê¸°ëŠ¥ì„
+ì¶”ê°€í•˜ëŠ”ê²ƒì´ ëª©í‘œì´ë‹¤.
 */
 int init(char *FileName, char *FilePath) {
 	int choice = 0;
@@ -64,52 +64,57 @@ int init(char *FileName, char *FilePath) {
 	Set_Cursor(36, 0);
 	printf("-----------------------------------------------");
 	Set_Cursor(36, 2);
-	printf("   ScreenShot image ÆÄÀÏ¸í  : %s", FileName);
+	printf("   ScreenShot image íŒŒì¼ëª…  : %s", FileName);
 	Set_Cursor(36, 4);
-	printf("   ScreenShot image °æ·Î    : %s", FilePath);
+	printf("   ScreenShot image ê²½ë¡œ    : %s", FilePath);
 	Set_Cursor(36, 6);
 	printf("-----------------------------------------------");
 	Set_Cursor(x, y + i);
 	i += 2;
-	printf("0. ½ºÅ©¸° ¼¦                     1.ÆÄÀÏ¸í º¯°æ");
+	printf("0. ìŠ¤í¬ë¦° ìƒ·                     1.íŒŒì¼ëª… ë³€ê²½");
 	Set_Cursor(x, y + i);
 	i += 2;
-	printf("2. ÆÄÀÏ°æ·Î º¯°æ                 3.³ª°¡±â");
+	printf("2. íŒŒì¼ê²½ë¡œ ë³€ê²½                 3.ë‚˜ê°€ê¸°");
 	Set_Cursor(x, y + i);
 	i += 2;
-	printf("ÀÔ·Â : ");
+	printf("ì…ë ¥ : ");
 	scanf("%d", &choice);
 
 	return choice;
 }
 int main(void)
 {
-	start();   // ½ÃÀÛÈ­¸é È£Ãâ
+	start();   // ì‹œì‘í™”ë©´ í˜¸ì¶œ
 	
 	int choice = 0;
 	int sc = 0;
 
 	char fName[100];
-	char FileName[100] = "screenShot.png";
+	char fName1[200];
+	char FileName[100] = "screenshot.bmp";
 	char FilePath[100] = ".\\save\\";
 	char RFile[200] = "";
-	char *ptr;
+	
 	strcat(RFile, FilePath);
 	strcat(RFile, FileName);
 
 	LPTSTR File = (LPSTR)(LPCTSTR)RFile;
 	LPTSTR fFile;
 	while (1)
-	{
+  {
 		choice = init(FileName, FilePath);
 
 		switch (choice) {
 		case 0:
-			printf("0 : ±âº» ÀÌ¸§À¸·Î ½ºÅ©¸° ¼¦  1. ÀÌ¸§ º¯°æ ÈÄ ½ºÅ©¸° ¼¦ 2 : ¸¶¿ì½º¸¦ ÀÌ¿ëÇÏ¿© ½ºÅ©¸° ¼¦\n");
+			printf("0 : ê¸°ë³¸ ì´ë¦„ìœ¼ë¡œ ìŠ¤í¬ë¦° ìƒ·  1. ì´ë¦„ ë³€ê²½ í›„ ìŠ¤í¬ë¦° ìƒ· 2 : ë§ˆìš°ìŠ¤ë¥¼ ì´ìš©í•˜ì—¬ ìŠ¤í¬ë¦° ìƒ·\n");
 			scanf("%d", &sc);
 			switch (sc) {
 			case 0: //Full
-				ptr = SetFileName(FileName);
+				strcpy(RFile, FilePath);
+				strcat(RFile, SetFileName(FileName));
+
+				File = (LPSTR)(LPCTSTR)RFile;
+				
 				if (takeScreenshot(File) == 0)
 				{
 					printf("Screenshot successfully saved.");
@@ -119,9 +124,11 @@ int main(void)
 					printf("Problem saving screenshot.");
 				}
 				break;
-			case 1: // ÀÌ¸§ ÇÑ ¹ø º¯°æ ÈÄ ½ºÅ©¸°¼¦
-				ptr = Rename(fName);
-				fFile = (LPSTR)(LPCTSTR)ptr;
+
+			case 1: // ì´ë¦„ í•œ ë²ˆ ë³€ê²½ í›„ ìŠ¤í¬ë¦°ìƒ·
+				strcpy(fName1, FilePath);
+				strcat(fName1, Rename(fName));
+				fFile = (LPSTR)(LPCTSTR)fName1;
 				if (takeScreenshot(fFile) == 0)
 				{
 					printf("Screenshot successfully saved.\n");
@@ -132,6 +139,11 @@ int main(void)
 				}
 				break;
 			case 2: //Mouse
+				strcpy(RFile, FilePath);
+				strcat(RFile, SetFileName(FileName));
+
+				File = (LPSTR)(LPCTSTR)RFile;
+
 				if (takeScreenshot(File) == 0) {
 					if (captureWithMouseDragging(RFile)) {
 						printf("Screenshot successfully saved.");
@@ -148,7 +160,7 @@ int main(void)
 				break;
 			}
 			break;
-		case 1: // ±âº»ÀÌ¸§ º¯°æµÇ´Â ±â´É
+		case 1: // ê¸°ë³¸ì´ë¦„ ë³€ê²½ë˜ëŠ” ê¸°ëŠ¥
 
 			break;
 
@@ -161,7 +173,7 @@ int main(void)
 			LPTSTR File = (LPSTR)(LPCTSTR)RFile;
 			break;
 		case 3:
-			printf("½ºÅ©¸° ¼¦ ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+			printf("ìŠ¤í¬ë¦° ìƒ· í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 			return 0;
 
 		}

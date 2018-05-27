@@ -20,6 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bitmap.c" />
+<<<<<<< HEAD
+    <ClCompile Include="rename.c" />
+=======
+>>>>>>> origin/master
     <ClCompile Include="repath.c" />
     <ClCompile Include="screenshot-simple.c" />
     <ClCompile Include="start.c" />
@@ -27,7 +31,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
+<<<<<<< HEAD
+=======
     <ClInclude Include="resource.h" />
+>>>>>>> origin/master
     <ClInclude Include="take-screenshot.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -55,7 +62,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>

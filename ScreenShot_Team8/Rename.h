@@ -1,5 +1,2 @@
-<<<<<<< HEAD
+#include <Windows.h>
 char * Rename(char * FileName);	
-=======
-char Rename(char * FileName);	
->>>>>>> origin/master

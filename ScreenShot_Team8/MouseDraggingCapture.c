@@ -24,8 +24,8 @@ void drawRectangle(IplImage * src, IplImage * dst, CvPoint p1, CvPoint p2)
 	for (int x = 0; x<w; x++)
 		for (int y = 0; y<h; y++)
 		{
-			int x1 = (float)(x) / w*src->width;
-			int y1 = (float)(y) / h*src->height;
+			int x1 = (float)(x) / w * src->width;
+			int y1 = (float)(y) / h * src->height;
 			int x2 = x + p1.x;
 			int y2 = y + p1.y;
 			if (x1<0 || x1>src->width - 1) continue;
@@ -46,7 +46,7 @@ void drawRectangle(IplImage * src, IplImage * dst, CvPoint p1, CvPoint p2)
 
 void myMouse(int event, int x, int y, int flags, void * param)
 {
-	
+
 
 	//pt1 = cvPoint(-1, -1);
 	if (event == CV_EVENT_LBUTTONDOWN) {

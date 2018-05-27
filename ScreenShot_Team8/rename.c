@@ -7,47 +7,51 @@
 typedef struct _finddata_t FILE_SEARCH;
 
 char * Rename(char *fName) {			// 파일이름 변경
-	int set = 0;
+	char CompareArr[100];
 	char *ptr;
+	int set=0,same=0;
 	FILE_SEARCH fd;
 	long handle;
-	int result = 1;
-	handle = _findfirst(".\\*.*", &fd);
+	int result;
 
-	printf("파일 이름 변경\n");
-	scanf("%s", fName);
-	char CompareArr[100];
-	strcpy(CompareArr, fName);
-	strcat(CompareArr, ".bmp");
-	printf("comparearr :%s\n\n", CompareArr);
-	if (handle == -1)
+	while (set!=1)
 	{
-		printf("There were no files.\n");
-		return fName;
-	}
+		set = 0;
+		result = 1;
+		same = 0;
+		handle = _findfirst(".\\save\\*.bmp", &fd);
 
-	while (result != -1)
-	{
-		printf("File: %s\n", fd.name);
+		printf("파일 이름 변경\n");
+		scanf("%s", fName);
 		
-		if (strcmp(CompareArr, fd.name) == 0) 
+		strcpy(CompareArr, fName);
+		strcat(CompareArr, ".bmp");
+		printf(">> %s\n\n", CompareArr);
+		if (handle == -1)
 		{
-			set = 1;
-			printf("동일한 이름이 있습니다. 기본 값으로 저장됩니다.\n");
-			fName[0] = NULL;
-			ptr = SetFileName(fName);
-			break;
+			printf("There were no files.\n");
+			return fName;
 		}
-		result = _findnext(handle, &fd);
+		
+		while (result != -1)
+		{
+			if (strcmp(CompareArr, fd.name) == 0)
+			{
+				
+				printf("동일한 이름이 있습니다.\n");
+				same = 1;
+				break;
+			}
+			result = _findnext(handle, &fd);
+		}
+		if (same != 1)
+			set = 1;
 	}
 
 	_findclose(handle);
-	if (set)
-		return ptr; // TODO : 밖에 FileName=filename();해줘야함
-	else
-	{
-		printf("변경된 파일명 : %s.bmp\n", fName);
-		strcat(fName, ".bmp");
-		return fName;
-	}
+	
+	printf("변경된 파일명 : %s.bmp\n", fName);
+	strcat(fName, ".bmp");
+	return fName;
+	
 }

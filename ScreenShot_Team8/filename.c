@@ -2,17 +2,15 @@
 #include<stdio.h>
 #include<io.h>
 #include<stdlib.h>
-//#include<malloc.h>
 
 typedef struct _finddata_t FILE_SEARCH;
 char * SetFileName(char *FileName)
 {
-
 	FILE_SEARCH fd;
 	long handle;
 	int result = 1;
 	char fileform[] = "screenshot(n).bmp";
-	handle = _findfirst(".\\*.*", &fd);
+	handle = _findfirst(".\\save\\*.bmp", &fd);
 
 	char num[100]; // 파일명에 있는 숫자 모음
 	int filenum = 0; // screenshot.bmp가 있는지 . 있으면 1
@@ -27,6 +25,7 @@ char * SetFileName(char *FileName)
 	{
 		printf("There were no files.\n");
 		FileName = "screenshot.bmp";
+		printf("FileName: >>%s\n", FileName);
 		return FileName;
 	}
 

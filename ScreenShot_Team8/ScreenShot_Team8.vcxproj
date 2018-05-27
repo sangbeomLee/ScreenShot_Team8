@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,7 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bitmap.c" />
+<<<<<<< HEAD
     <ClCompile Include="rename.c" />
+=======
+>>>>>>> origin/master
     <ClCompile Include="repath.c" />
     <ClCompile Include="screenshot-simple.c" />
     <ClCompile Include="start.c" />
@@ -28,6 +31,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
+<<<<<<< HEAD
+=======
+    <ClInclude Include="resource.h" />
+>>>>>>> origin/master
     <ClInclude Include="take-screenshot.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

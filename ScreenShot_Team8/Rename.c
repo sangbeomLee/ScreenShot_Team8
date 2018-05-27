@@ -1,17 +1,16 @@
 #include <Windows.h>
-<<<<<<< HEAD
 #include<stdio.h>
 #include<io.h>
 #include<stdlib.h>
 #include<malloc.h>
 #include "filename.h"
 typedef struct _finddata_t FILE_SEARCH;
-=======
-#include <string.h>
->>>>>>> origin/master
 
-char * Rename(char *FileName) {			// 파일이름 변경
+char Rename(char FileName) {			// 파일이름 변경
 	int set = 0;
+
+
+	char ReFileName[100];
 	char *ptr;
 	FILE_SEARCH fd;
 	long handle;
@@ -19,45 +18,37 @@ char * Rename(char *FileName) {			// 파일이름 변경
 	handle = _findfirst(".\\*.*", &fd);
 
 	printf("파일 이름 변경\n");
-	scanf("%s", FileName);
+	scanf("%s", ReFileName);
 	//TEXT("C:\\Users\\wing9\\Desktop\\ScreenShot.bmp");
 	//LPCTSTR refilename = TEXT("c:\ScreenShot.bmp");
-	char CompareArr[100];
-	strcpy(CompareArr, FileName);
-	strcat(CompareArr, ".bmp");
-	printf("comparearr :%s\n\n", CompareArr);
+
 	if (handle == -1)
 	{
 		printf("There were no files.\n");
-		return FileName;
+		return ReFileName;
 	}
 
 	while (result != -1)
 	{
 		printf("File: %s\n", fd.name);
-		
-		if (strcmp(CompareArr, fd.name) == 0) 
+
+		if (strcmp(fd.name, ReFileName) == 0) // screenshot.bmp인 파일 있음
 		{
 			set = 1;
 			printf("동일한 이름이 있습니다. 기본 값으로 저장됩니다.\n");
-			FileName[0] = NULL;
-			ptr = SetFileName(FileName);
+			ReFileName[0] = NULL;
+			ptr=filename(ReFileName);
 			break;
 		}
 		result = _findnext(handle, &fd);
 	}
 
-<<<<<<< HEAD
 	_findclose(handle);
 	if (set)
 		return ptr; // TODO : 밖에 FileName=filename();해줘야함
 	else
 	{
-		printf("변경된 파일명 : %s.bmp\n", FileName);
-		strcat(FileName, ".bmp");
-		return FileName;
+		printf("변경된 파일명 : %s\n", ReFileName);
+		return ReFileName;
 	}
 }
-=======
-}
->>>>>>> origin/master

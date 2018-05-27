@@ -49,9 +49,7 @@
 
 #include <Windows.h>
 #include <stdio.h>
-#include "filename.h"
-#include "Rename.h"
-
+#include <string.h>
 
 /*
 C언어를 이용하여 스크린샷 찍는 프로그램을 찍는 오픈소스이다.
@@ -61,92 +59,40 @@ C언어를 이용하여 스크린샷 찍는 프로그램을 찍는 오픈소스이다.
 
 int main(void)
 {
-	
-/*	char FilePath[100] = ".\\Users\jungy\shot\ScreenShot_Team8\ScreenShot_Team8";
-	char RFile[200] = "";
-	strcat(RFile, FileName);
-	strcat(RFile, FilePath);
-*/	
+	start();   // 시작화면 호출
 
-//	LPTSTR File= (LPSTR)(LPCTSTR)RFile;
-
-	char FileName[100]; // main->함수로 넘겨줄 배열
-	char *ptr; // FileName 포인터 
-	//LPTSTR File; //takescreenshot에 넘겨줄 애
-	
 	int choice = 0;
 	int sc = 0;
-	start();	// 시작화면 호출
 
+	char fName[100];
+	char FileName[100] = "screenShot.png";
+	char FilePath[100] = ".\\save\\";
+	char RFile[200] = "";
+	char temp[100];
+	char *ptr;
+	strcat(RFile, FilePath);
+	strcat(RFile, FileName);
 
+	LPTSTR File = (LPSTR)(LPCTSTR)RFile;
+	LPTSTR fFile;
 	while (1)
 	{
 		printf("------------------------------------\n");
-		printf("스크린 샷 -> 1\n");
-		printf("설정하기 -> 2\n");
-		printf("나가기 -> 3\n");
-		printf("------------------------------------\n");
-		scanf("%d", &choice);
+		printf("현재 저장될 Screenshot Image의 정보\n");
+		printf("파일명 : %s\n\n", FileName);
 
-		switch (choice)
-		{
-		case 1:
-			ptr = SetFileName(FileName);
-			printf(": %s\n", ptr);
-			LPTSTR File = (LPSTR)(LPCTSTR)ptr;
-			printf("설정없이 스크린샷했을 때 File: %s\n", File);
-			if (takeScreenshot(File) == 0)
-			{
-				printf("Screenshot successfully saved.\n");
-			}
-			else
-			{
-				printf("Problem saving screenshot.\n");
-			}
-			break;
-
-		case 2:
-			printf("------------------------------------\n");
-			printf("파일명 변경 -> 1\n");
-			printf("파일경로 변경 -> 2\n");
-			printf("------------------------------------\n");
-			scanf("%d", &sc);
-			switch (sc) {
-			case 1:
-				ptr = Rename(FileName);
-				File = (LPSTR)(LPCTSTR)ptr;
-				if (takeScreenshot(File) == 0)
-				{
-					printf("Screenshot successfully saved.\n");
-				}
-				else
-				{
-					printf("Problem saving screenshot.\n");
-				}
-				break;
-			case 2:
-				break;
-			}
-			break;
-		case 3:
-			printf("스크린 샷 프로그램을 종료합니다.");
-			return 0;
-		}
-		
-	
-		/*printf("파일명 : %s\n\n", FileName);
-
-		//	printf("파일명 : %s\n파일경로 : %s\n\n", FileName, filepath);
+		//   printf("파일명 : %s\n파일경로 : %s\n\n", FileName, filepath);
 		printf("0 : 스크린 샷  1 : 파일명 변경  2 : 파일경로 변경 3 : 나가기\n");
 		printf("입력 : ");
 		scanf("%d", &choice);
 
 		switch (choice) {
 		case 0:
-			printf("0 : Full ScreenShot  1 : ScreenShot with mouse");
+			printf("0 : 기본 이름으로 스크린 샷  1. 이름 변경 후 스크린 샷 2 : 마우스를 이용하여 스크린 샷\n");
 			scanf("%d", &sc);
 			switch (sc) {
-			case 0: // Full Screenshot
+			case 0: //Full
+				ptr = SetFileName(FileName);
 				if (takeScreenshot(File) == 0)
 				{
 					printf("Screenshot successfully saved.");
@@ -155,14 +101,45 @@ int main(void)
 				{
 					printf("Problem saving screenshot.");
 				}
+				break;
+			case 1: // 이름 한 번 변경 후 스크린샷
+				ptr = Rename(fName);
+				fFile = (LPSTR)(LPCTSTR)ptr;
+				if (takeScreenshot(fFile) == 0)
+				{
+					printf("Screenshot successfully saved.\n");
+				}
+				else
+				{
+					printf("Problem saving screenshot.\n");
+				}
+			case 2: //Mouse
+				if (takeScreenshot(File) == 0) {
+					if (captureWithMouseDragging(RFile)) {
+						printf("Screenshot successfully saved.");
+					}
+					else
+					{
+						printf("Problem saving screenshot.");
+					}
+				}
+				else
+				{
+					printf("Problem saving screenshot.");
+				}
+				break;
 			}
-
-		case 1: // 파일명 변경
+			break;
+		case 1: // 기본이름 변경되는 기능
 
 			break;
 
 		case 2:
-			rePath(File);
+			strcpy(FilePath, rePath(FilePath));
+			strcpy(RFile, FilePath);
+			strcat(RFile, FileName);
+
+			LPTSTR File = (LPSTR)(LPCTSTR)RFile;
 			break;
 		case 3:
 			printf("스크린 샷 프로그램을 종료합니다.");
@@ -170,12 +147,6 @@ int main(void)
 
 		}
 
-
-
-
-
-	}*/
-		
 	}
 	return 0;
 }

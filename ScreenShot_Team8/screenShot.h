@@ -40,12 +40,3 @@ int createBitmapFile(LPCTSTR lpszFileName, HBITMAP hBitmap, HDC hdc);
 int takeScreenshot(LPTSTR filename);
 
 #endif  /* SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H */
-
-#ifndef SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H
-#define SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H
-
-int takeScreenshot(LPTSTR filename);
-
-#endif  /* SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H */
-
-

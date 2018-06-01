@@ -8,7 +8,7 @@ char * setFileName(char *filePath, char *fileName)
 	long handle;
 	int result = 1;
 
-	char pathForChecking[100]; // 파일탐색 위해
+	char pathForChecking[100];
 	strcpy(pathForChecking, filePath);
 	strcat(pathForChecking, "*.bmp");
 
@@ -18,7 +18,7 @@ char * setFileName(char *filePath, char *fileName)
 	char overlapName[100]; // 파일명에 있는 숫자 모음
 	int overlapNameIdx = 0;
 	char stdName[100] = "screenshot.bmp";
-	int existBasic = 0; // screenshot.bmp가 있는지 . 있으면 1
+	int existBasic = 0; // screenshot.bmp파일명의 존재여부 
 
 	if (handle == -1)
 	{
@@ -28,13 +28,13 @@ char * setFileName(char *filePath, char *fileName)
 
 	while (result != -1)
 	{
-		if (strncmp(fileForm, file.name, 11) == 0) // 'screenshot('까지 비교했을때 동일하면
+		if (strncmp(fileForm, file.name, 11) == 0) // 'screenshot('까지 비교했을때 동일한지 비교
 		{
-			overlapName[overlapNameIdx] = file.name[11]; // File의 number를 OverlapName배열에 넣는다.  
+			overlapName[overlapNameIdx] = file.name[11]; // File의 number를 OverlapName배열에 삽입
 			overlapNameIdx++;
 		}
 
-		if (strcmp(file.name, stdName) == 0) // screenshot.bmp인 파일 있음
+		if (strcmp(file.name, stdName) == 0)
 		{
 			existBasic = 1;
 		}
@@ -42,22 +42,22 @@ char * setFileName(char *filePath, char *fileName)
 	}
 
 	_findclose(handle);
-	if (overlapNameIdx == 0)// num배열에 아무것도 넣은게 없다.
+	if (overlapNameIdx == 0) // overlapNameIdx가 비었음
 	{
-		if (existBasic == 0) // screenshot.bmp없다.
+		if (existBasic == 0) // screenshot.bmp 의 파일명 없음
 			return stdName;
 		
-		else // screenshot.bmp있다.
+		else
 		{
 			fileName = "screenshot(1).bmp";
 			return fileName;
 		}
 	}
-	else // num배열 채워져있다.
+	else // overlapNameIdx배열에 값 존재
 	{
-		if (existBasic == 0) // screenshot.bmp없다.
+		if (existBasic == 0) // screenshot.bmp의 파일명 없음 
 			return stdName;
-		else //num 에 숫자들이 있고 screenshot.bmp도 있다. 
+		else // overlapNameIdx배열에 값이 존재하고 screenshot.bmp의 파일명도 존재
 		{
 			int i = 0;
 			while (i != overlapNameIdx)

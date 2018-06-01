@@ -20,7 +20,6 @@ int main(void)
 	char filePath[100] = ".\\save\\";
 	
 	char destFile[200] = "";
-	char infoFileName[100];
 
 	strcat(destFile, filePath);
 	strcat(destFile, fileName);

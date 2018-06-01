@@ -3,7 +3,7 @@
 int takeScreenshot(LPTSTR filename)
 {
 	printf("filename: %s\n", filename);
-	HDC desktopDC = GetDC(NULL); // ¿øº» DC
+	HDC desktopDC = GetDC(NULL); 
 	HDC compatDC = CreateCompatibleDC(desktopDC); 
 	int width = GetSystemMetrics(SM_CXSCREEN);
 	int height = GetSystemMetrics(SM_CYSCREEN);

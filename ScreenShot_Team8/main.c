@@ -1,9 +1,7 @@
 #include <Windows.h>
 #include <stdio.h>
 #include <string.h>
-#include "reName.h"
-#include "setFileName.h"
-#include "mouseDraggingCapture.h"
+#include "shotFunction.h"
 /*
 C언어를 이용하여 스크린샷 찍는 프로그램을 찍는 오픈소스이다.
 기본적으로 스크린샷이 어떻게 찍히는지를 알고 부가기능을
@@ -22,17 +20,18 @@ int main(void)
 	char filePath[100] = ".\\save\\";
 	
 	char destFile[200] = "";
+	char infoFileName[100];
 
 	strcat(destFile, filePath);
 	strcat(destFile, fileName);
 
 	LPTSTR file = (LPSTR)(LPCTSTR)destFile;
-
+	
 	while (1)
 	{
 		printf("------------------------------------\n\n");
 		printf("현재 저장될 Screenshot Image의 정보\n");
-		printf("파일명 : %s\n", fileName);
+		printf("최근 저장된 파일명 : %s\n", fileName);
 		printf("파일경로 : %s\n", filePath);
 		printf("------------------------------------\n\n");
 
@@ -53,7 +52,6 @@ int main(void)
 				strcpy(destFile, filePath);
 				strcat(destFile, setFileName(filePath, fileName));
 				file = (LPSTR)(LPCTSTR)destFile;
-				printf("File: %s\n", file);
 				if (takeScreenshot(file) == 0)
 				{
 					printf("스크린샷이 저장 되었습니다.\n");
@@ -80,9 +78,7 @@ int main(void)
 			case 2: // 마우스를 이용하여 스크린샷
 				strcpy(destFile, filePath);
 				strcat(destFile, setFileName(filePath, fileName));
-
 				file = (LPSTR)(LPCTSTR)destFile;
-
 				if (takeScreenshot(file) == 0) {
 					if (captureWithMouseDragging(destFile)) {
 						printf("스크린샷이 저장 되었습니다.\n");
@@ -105,8 +101,7 @@ int main(void)
 			strcpy(filePath, rePath(filePath));
 			strcpy(destFile, filePath);
 			strcat(destFile, fileName);
-
-			file = (LPSTR)(LPCTSTR)destFile;
+//			file = (LPSTR)(LPCTSTR)destFile;
 			break;
 		case 2: // 종료
 			printf("스크린 샷 프로그램을 종료합니다.\n");

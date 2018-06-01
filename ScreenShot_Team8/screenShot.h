@@ -28,10 +28,24 @@
 *   2016 djcj <djcj@gmx.de>
 */
 #include <Windows.h>
-//mabe-later : 필요의 이유 상의
+#ifndef SCREENSHOT_SIMPLE_BITMAP_H
+#define SCREENSHOT_SIMPLE_BITMAP_H
+int createBitmapFile(LPCTSTR lpszFileName, HBITMAP hBitmap, HDC hdc);
+
+#endif  /* SCREENSHOT_SIMPLE_BITMAP_H */
+
 #ifndef SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H
 #define SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H
 
 int takeScreenshot(LPTSTR filename);
 
 #endif  /* SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H */
+
+#ifndef SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H
+#define SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H
+
+int takeScreenshot(LPTSTR filename);
+
+#endif  /* SCREENSHOT_SIMPLE_TAKE_SCREENSHOT_H */
+
+

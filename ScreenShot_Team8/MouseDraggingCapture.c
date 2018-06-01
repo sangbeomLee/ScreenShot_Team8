@@ -109,7 +109,6 @@ void myMouse(int event, int x, int y, int flags, void * param) //mouse callback 
 	}
 
 }
-
 int captureWithMouseDragging(char *RFile) {
 	g_src = cvLoadImage(RFile, CV_LOAD_IMAGE_COLOR); //loading fullscreen screnshot and saving in g_src image container
 	reFile = (LPSTR)(LPCTSTR)RFile;
